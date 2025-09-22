@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Beloved</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">
+                <h1>💕 For You Lovey💕</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About You</a></li>
+                <li><a href="#memories">Memories</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="floating-hearts">
+                <div class="heart">💖</div>
+                <div class="heart">💕</div>
+                <div class="heart">💗</div>
+                <div class="heart">💘</div>
+                <div class="heart">💝</div>
+            </div>
+            <h1 class="hero-title">Hi Tin hahahahaha</h1>
+            <p class="hero-subtitle">The most beautiful soul I've ever known</p>
+            <button class="cta-button" onclick="scrollToSection('about')">Discover Why I Love You</button>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">What Makes You Special</h2>
+            <div class="qualities-grid">
+                <div class="quality-card">
+                    <div class="icon">🌟</div>
+                    <h3>Your Beautiful Smile</h3>
+                    <p>Your smile lights up my entire world and makes every day brighter. It's the first thing I think about when I wake up.</p>
+                </div>
+                <div class="quality-card">
+                    <div class="icon">💝</div>
+                    <h3>Your Kind Heart</h3>
+                    <p>The way you care for others and show compassion is truly inspiring. Your heart is pure gold.</p>
+                </div>
+                <div class="quality-card">
+                    <div class="icon">🎭</div>
+                    <h3>Your Wonderful Laugh</h3>
+                    <p>Your laughter is music to my ears. It's the most beautiful sound in the world to me.</p>
+                </div>
+    
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Memories Section -->
+    <section id="memories" class="memories">
+        <div class="container">
+            <h2 class="section-title">Our Beautiful Moments</h2>
+            <div class="memories-timeline">
+                <div class="memory-item">
+                    <div class="memory-date">First Meeting</div>
+                    <div class="memory-content">
+                        <h3>The Day My Life Changed</h3>
+                        <p>From the moment I first saw you, I knew my life would never be the same. You walked into my world and suddenly everything made sense.</p>
+                    </div>
+                </div>
+                <div class="memory-item">
+                    <div class="memory-date">Every Day Since</div>
+                    <div class="memory-content">
+                        <h3>Growing Closer</h3>
+                        <p>Each day with you has been a gift. Every conversation, every laugh, every moment we share becomes a precious memory I treasure.</p>
+                    </div>
+                </div>
+                <div class="memory-item">
+                    <div class="memory-date">Right Now</div>
+                    <div class="memory-content">
+                        <h3>This Very Moment</h3>
+                        <p>Even now, as you read this, you're creating another beautiful memory in my heart. You are my present and my future.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>💕 From Pica chu hahahahaha</p>
+        </div>
+    </footer>
+
+    <script>
+        let rotationSpeed = 1;
+        let isRotating = true;
+        let rotationInterval;
+        
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Add smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // 3D Rotating Gallery Controls
+        function pauseRotation() {
+            const carousel = document.querySelector('.carousel-3d');
+            if (carousel) {
+                carousel.style.animationPlayState = 'paused';
+                isRotating = false;
+            }
+        }
+
+        function resumeRotation() {
+            const carousel = document.querySelector('.carousel-3d');
+            if (carousel) {
+                carousel.style.animationPlayState = 'running';
+                isRotating = true;
+            }
+        }
+
+        function changeSpeed() {
+            const carousel = document.querySelector('.carousel-3d');
+            if (carousel) {
+                rotationSpeed = rotationSpeed === 1 ? 0.5 : rotationSpeed === 0.5 ? 2 : 1;
+                const duration = rotationSpeed === 0.5 ? '20s' : rotationSpeed === 2 ? '5s' : '10s';
+                carousel.style.animationDuration = duration;
+                
+                // Update button text to show current speed
+                const speedBtn = document.querySelector('.control-btn:last-child');
+                speedBtn.textContent = rotationSpeed === 0.5 ? '🐌 Slow' : rotationSpeed === 2 ? '🚀 Fast' : '⚡ Normal';
+            }
+        }
+
+        // Add hover effect to pause rotation
+        document.addEventListener('DOMContentLoaded', function() {
+            const gallery = document.querySelector('.rotating-gallery');
+            if (gallery) {
+                gallery.addEventListener('mouseenter', () => {
+                    if (isRotating) pauseRotation();
+                });
+                gallery.addEventListener('mouseleave', () => {
+                    if (isRotating) resumeRotation();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
